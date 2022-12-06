@@ -2,6 +2,7 @@
 {
 	--col-fond: white;
 	--col-texte: black;
+	--col-case: red;
 	--col-clavier: rgb(221, 94, 94);
 }
 
@@ -29,24 +30,43 @@ body
 
 body>*
 {
-	margin-bottom: 5vh;
+	width: 100%;
+	margin: 2vh 0;
 }
 
 body>header>#titre
 {
-	letter-spacing: 2vw;
+	letter-spacing: 4vw;
+	font-size: 3rem;
 }
 
 body>#jeu
 {
+	width: 100%;
 	display: flex;
-	flex-wrap: wrap;
+	flex-direction: column;
 }
 
-body>#clavier
+body>#jeu>.row
+{
+	margin: 0 7vw;
+	display: flex;
+	justify-content: center;
+}
+
+body>#jeu>.row>.case
 {
 	width: 100%;
-	margin: 2vh 0;
+	max-width: 8.5vh;
+	height: 8.5vh;
+	margin: .5vh .5vw;
+	background-color: var(--col-case);
+	border-radius: 0.35rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-size: 1.5rem;
 }
 
 body>#clavier>table
