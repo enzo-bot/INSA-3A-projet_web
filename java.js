@@ -49,6 +49,10 @@ function updateGame(){
 				child.style.backgroundColor = ` #ffad22 `;
 				//child.style.textColor = ` black `
 			}
+			else if (userType[i][j]==2) {
+				child.style.backgroundColor = ` #08c011 `;
+				//child.style.textColor = ` black `
+			}
 			child = child.nextSibling;
 		}
 	}
@@ -122,8 +126,16 @@ function checkWord(i){
 			for(let k =0;k<word.length;k++) {
 				if(userInput[i][j] == word[k]) {
 					userType[i][j] = 1;
+					if (j==k){
+						userType[i][j] = 2;
+					}
 				}
 			}
+		}
+	}
+	else {
+		for(let j =0;j<word.length;j++) {
+			userType[i][j] = 2;
 		}
 	}
 }
