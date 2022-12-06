@@ -1,0 +1,24 @@
+.jeu {
+	margin-left:auto;
+	margin-right:auto;
+	display:flex;
+	flex-wrap:wrap;
+}
+
+.lettre {
+	background-color:black;
+	height:50px;
+}
+
+.correct {
+    background-color: green;
+}
+
+.incorrect {
+    background-color: gray;
+}
+
+.parciel {
+    background-color: orange;
+}
+
