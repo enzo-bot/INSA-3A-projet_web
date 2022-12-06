@@ -26,7 +26,7 @@ function generateWord(dictionnary) {
   generatedWord=[];
 	generatedWord[0]='t';
 	generatedWord[1]='s';
-	generatedWord[2]='t';
+	generatedWord[2]='e';
 	//Choisir un mot au hasard
 	//Retourner le mot dans un tableau
 	return generatedWord;
@@ -46,7 +46,8 @@ function updateGame(){
 			let letter = userInput[i][j];
 			child.textContent=letter;
 			if (userType[i][j]==1) {
-				child.backgroundColor = `yellow`;
+				child.style.backgroundColor = ` #ffad22 `;
+				//child.style.textColor = ` black `
 			}
 			child = child.nextSibling;
 		}
@@ -118,7 +119,7 @@ function checkWord(i){
 
 	if (goodWord==0) {
 		for(let j =0;j<word.length;j++) {
-			for(let k =0;j<word.length;j++) {
+			for(let k =0;k<word.length;k++) {
 				if(userInput[i][j] == word[k]) {
 					userType[i][j] = 1;
 				}
@@ -131,13 +132,15 @@ function newGame() {
 	word = generateWord("dic.txt");
 	n = word.length;
 	userInput = [];
+	userType=[];
 	gameI = 0;
 	gameJ = 0;
 	for(let i = 0;i<nbEssai;i++){
 		userInput[i] = [];
+		userType[i] = [];
 		for(let j=0;j<n;j++) {
 			userInput[i][j] = "";
-			userType = 0;
+			userType[i][j] = 0;
 		}
 	}
 
