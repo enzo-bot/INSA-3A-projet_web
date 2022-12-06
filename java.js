@@ -24,9 +24,13 @@ function generateWord(dictionnary) {
   console.log(array[0]);
 
   generatedWord=[];
-	generatedWord[0]='t';
-	generatedWord[1]='s';
-	generatedWord[2]='e';
+	generatedWord[0]='T';
+	generatedWord[1]='A';
+	generatedWord[2]='B';
+	generatedWord[3]='L';
+	generatedWord[4]='E';
+	generatedWord[5]='A';
+	generatedWord[6]='U';
 	//Choisir un mot au hasard
 	//Retourner le mot dans un tableau
 	return generatedWord;
@@ -90,11 +94,16 @@ function generateGame(){
 }
 
 
-document.onkeypress = function(evt) {
+document.onkeydown = function(evt) {
 	evt = evt || window.event;
 	var charCode = evt.keyCode || evt.which;
 	var charStr = String.fromCharCode(charCode);
-	addLetter(charStr);
+	if((charCode >= 41 && charCode <= 90)||(charCode >= 97 && charCode <= 122)) {
+		addLetter(charStr);
+	}
+	else if(charCode==8){
+		removeLetter();
+	}
 };
 
 function addLetter(lettre) {
@@ -111,6 +120,15 @@ function addLetter(lettre) {
 	else {
 	    gameJ++;
 	}
+}
+
+function removeLetter() {
+	if (gameJ > 0){
+		gameJ -= 1;
+	}
+	userInput[gameI][gameJ] = "";
+	updateGame();
+	
 }
 
 function checkWord(i){
