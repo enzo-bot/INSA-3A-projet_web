@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="java.js"></script>
+    <script src="https://kit.fontawesome.com/c3b8725dbb.js" crossorigin="anonymous"></script>
   </head>
   <body>
+    <header>
+      <h1 id="titre">WORDLE</h1>
+    </header>
 
-    <header></header>
-
-		<div id="jeu">
-		</div>
+		<section id="jeu">
+    </section>
     <script>
 			newGame();
 		</script>
 
-    <section>
-      <table id="clavier" border="1">
+    <section id="clavier">
+      <table>
         <tbody>
           <td>A</td>
           <td>Z</td>
@@ -40,20 +43,20 @@
           <td>M</td>
         </tbody>
         <tbody>
-          <td colspan="2">OK</td>
+          <td colspan="2">
+            <i class="fa-solid fa-square-check"></i>
+          </td>
           <td>W</td>
           <td>X</td>
           <td>C</td>
           <td>V</td>
           <td>B</td>
           <td>N</td>
-          <td colspan="2">Suppr</td>
+          <td colspan="2">
+            <i class="fa-solid fa-delete-left"></i>
+          </td>
         </tbody>
       </table>
     </section>
-
-    <footer>
-
-    </footer>
   </body>
 </html>

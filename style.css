@@ -1,24 +1,65 @@
-.jeu {
-	margin-left:auto;
-	margin-right:auto;
-	display:flex;
-	flex-wrap:wrap;
+:root
+{
+	--col-fond: white;
+	--col-texte: black;
+	--col-clavier: rgb(221, 94, 94);
 }
 
-.lettre {
-	background-color:black;
-	height:50px;
+*
+{
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	text-rendering: optimizeLegibility;
+	user-select: none;
+	color: var(--col-texte);
+	text-align: center;
 }
 
-.correct {
-    background-color: green;
+body
+{
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	background-color: var(--col-fond);
 }
 
-.incorrect {
-    background-color: gray;
+body>*
+{
+	margin-bottom: 5vh;
 }
 
-.parciel {
-    background-color: orange;
+body>header>#titre
+{
+	letter-spacing: 2vw;
 }
 
+body>#clavier
+{
+	width: 100%;
+	margin: 2vh 0;
+}
+
+body>#clavier>table
+{
+	width: 100%;
+	padding: 0 10vw;
+	border-spacing: 0.4rem;
+}
+
+body>#clavier>table td
+{
+	padding: 1vh 0;
+	background-color: var(--col-clavier);
+	border-radius: 0.35rem;
+	width: 5vw;
+}
+
+body>#clavier>table td:hover
+{
+	filter: brightness(1.5);
+	cursor: pointer;
+}
