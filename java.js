@@ -73,7 +73,7 @@ function generateGame(){
 	for(let i = 0;i<nbEssai;i++){
 		for(let j=0;j<n;j++) {
 			var child = document.createElement('div');
-			child.id = "lettre";
+			child.classList.add("case");
 			child.style.width = `${divWidth}px`;
 			child.style.height = `${divHeight}px`;
 			child.style.backgroundColor = ` #818181 `;
@@ -89,8 +89,6 @@ function generateGame(){
 			jeu.appendChild(child);
 		}
 	}
-	jeu.style.display = `flex`;
-	jeu.style.flexWrap = `wrap`;
 }
 
 

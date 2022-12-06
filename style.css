@@ -37,6 +37,12 @@ body>header>#titre
 	letter-spacing: 2vw;
 }
 
+body>#jeu
+{
+	display: flex;
+	flex-wrap: wrap;
+}
+
 body>#clavier
 {
 	width: 100%;
