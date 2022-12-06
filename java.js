@@ -1,6 +1,7 @@
 var word=[];
 var n = 0;
 var userInput=[];
+var userType=[];
 var nbEssai = 6;
 //Position du prochain caractère que l'utilisateur va écrire
 var gameI = 0; 
@@ -44,6 +45,9 @@ function updateGame(){
 		for(let j=0;j<n;j++) {
 			let letter = userInput[i][j];
 			child.textContent=letter;
+			if (userType[i][j]==1) {
+				child.backgroundColor = `yellow`;
+			}
 			child = child.nextSibling;
 		}
 	}
@@ -54,6 +58,8 @@ function generateGame(){
 	while(jeu.firstChild){ 
 		jeu.removeChild(jeu.firstChild);
 	}
+
+
 
 	for(let i = 0;i<nbEssai;i++){
 		for(let j=0;j<n;j++) {
@@ -103,7 +109,22 @@ function addLetter(lettre) {
 }
 
 function checkWord(i){
-	
+	let goodWord=1;
+	for(let j =0;j<word.length;j++) {
+		if(userInput[i][j] != word[j]) {
+			goodWord = 0;
+		}
+	}
+
+	if (goodWord==0) {
+		for(let j =0;j<word.length;j++) {
+			for(let k =0;j<word.length;j++) {
+				if(userInput[i][j] == word[k]) {
+					userType[i][j] = 1;
+				}
+			}
+		}
+	}
 }
 
 function newGame() {
@@ -116,6 +137,7 @@ function newGame() {
 		userInput[i] = [];
 		for(let j=0;j<n;j++) {
 			userInput[i][j] = "";
+			userType = 0;
 		}
 	}
 
