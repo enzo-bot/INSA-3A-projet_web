@@ -102,20 +102,16 @@ document.onkeydown = function(evt) {
 	else if(charCode==8){
 		removeLetter();
 	}
+	else if(charCode == 13){
+		validerWord(gameI);
+		updateGame();
+	}
 };
 
 function addLetter(lettre) {
 	userInput[gameI][gameJ] = lettre;
 	updateGame();
-	if (gameJ == n-1){
-		gameJ =0;
-		gameI +=1;
-		checkWord(gameI-1);
-		if (gameI >= nbEssai) {
-			newGame();
-		}
-	}
-	else {
+	if (gameJ != n){
 	    gameJ++;
 	}
 }
@@ -127,6 +123,22 @@ function removeLetter() {
 	userInput[gameI][gameJ] = "";
 	updateGame();
 	
+}
+
+function validerWord() {
+	if((gameJ==n)) {
+		console.log("ok");
+		gameJ =0;
+		gameI +=1;
+		checkWord(gameI-1);
+		if (gameI >= nbEssai) {
+			newGame();
+		}
+	}
+}
+
+function validWord(){
+	return true;
 }
 
 function checkWord(i){
