@@ -1,66 +1,63 @@
-:root
-{
-	--col-fond: white;
-	--col-texte: black;
-	--col-case: red;
-	--col-clavier: rgb(221, 94, 94);
+:root {
+	--col-background: white;
+	--col-text: black;
+	--col-cell: rgb(187, 187, 187);
+	--col-cell-victory: green;
+	--col-cell-correct: orange;
+	--col-cell-wrong: red;
+	--col-keyboard: rgb(148, 148, 148);
 }
 
-*
-{
+* {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
 	text-rendering: optimizeLegibility;
 	user-select: none;
-	color: var(--col-texte);
 	text-align: center;
+	transition: all 0.2s ease;
 }
 
-body
-{
+body {
 	width: 100vw;
 	height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	background-color: var(--col-fond);
+	color: var(--col-text);
+	background-color: var(--col-background);
 }
 
-body>*
-{
+body>* {
 	width: 100%;
 	margin: 2vh 0;
 }
 
-body>header>#titre
-{
+body>header>#titre {
 	letter-spacing: 4vw;
+	padding-left: 4vw;
 	font-size: 3rem;
 }
 
-body>#jeu
-{
+body>#game {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 }
 
-body>#jeu>.row
-{
+body>#game>.row {
 	margin: 0 7vw;
 	display: flex;
 	justify-content: center;
 }
 
-body>#jeu>.row>.case
-{
+body>#game>.row>.cell {
 	width: 100%;
 	max-width: 8.5vh;
 	height: 8.5vh;
 	margin: .5vh .5vw;
-	background-color: var(--col-case);
+	background-color: var(--col-cell);
 	border-radius: 0.35rem;
 	display: flex;
 	align-items: center;
@@ -69,23 +66,74 @@ body>#jeu>.row>.case
 	font-size: 1.5rem;
 }
 
-body>#clavier>table
-{
+body>#game>.row>.cell.victory {
+	background-color: var(--col-cell-victory);
+}
+
+body>#game>.row>.cell.correct {
+	background-color: var(--col-cell-correct);
+}
+
+body>#game>.row>.cell.wrong {
+	background-color: var(--col-cell-wrong);
+}
+
+body>#keyboard>table {
 	width: 100%;
 	padding: 0 10vw;
-	border-spacing: 0.4rem;
+	border-spacing: 0.4vw 1vh;
 }
 
-body>#clavier>table td
-{
+body>#keyboard>table td {
+	width: 10%;
 	padding: 1vh 0;
-	background-color: var(--col-clavier);
+	background-color: var(--col-keyboard);
 	border-radius: 0.35rem;
-	width: 5vw;
+	transform: scale(0.95);
 }
 
-body>#clavier>table td:hover
-{
-	filter: brightness(1.5);
+body>#keyboard>table td:hover {
+	filter: brightness(1.25);
 	cursor: pointer;
+	transform: scale(1);
+}
+
+body>#keyboard>table td>i {
+	font-size: 1.5rem;
+	padding-top: 0.2rem;
+}
+
+body>#popup {
+	position: absolute;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--col-background);
+	background-color: rgba(0, 0, 0, 0.75);
+	cursor: pointer;
+	visibility: hidden;
+	opacity: 0%;
+}
+
+body>#popup #message {
+	font-size: 4rem;
+	letter-spacing: .5rem;
+	padding-left: .5rem;
+	margin-bottom: 1vh;
+}
+
+body>#popup #mot {
+	font-style: italic;
+	font-weight: normal;
+	margin-bottom: 5vh;
+}
+
+body>#popup #restart>i {
+	font-size: 3rem;
+}
+
+body>#popup.active {
+	visibility: visible;
+	opacity: 100%;
 }

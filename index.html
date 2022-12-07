@@ -8,17 +8,13 @@
   </head>
   <body>
     <header>
-      <h1 id="titre">WORDLE</h1>
+      <h1 id="title">WORDLE</h1>
     </header>
 
-		<section id="jeu">
+		<section id="game">
     </section>
-    <script>
-      jeu = document.getElementById("jeu");
-      newGame();
-    </script>
 
-    <section id="clavier">
+    <section id="keyboard">
       <table>
         <tbody>
           <td>A</td>
@@ -45,7 +41,7 @@
           <td>M</td>
         </tbody>
         <tbody>
-          <td colspan="2">
+          <td id="enter" colspan="2">
             <i class="fa-solid fa-square-check"></i>
           </td>
           <td>W</td>
@@ -54,11 +50,28 @@
           <td>V</td>
           <td>B</td>
           <td>N</td>
-          <td colspan="2">
+          <td id="delete" colspan="2">
             <i class="fa-solid fa-delete-left"></i>
           </td>
         </tbody>
       </table>
     </section>
+
+    <section id="popup">
+      <div>
+        <h1 id="message"></h1>
+        <h2 id="mot">
+          Le mot était : 
+          <b></b>
+        </h2>
+        <div id="restart">
+          <i class="fa-sharp fa-solid fa-rotate-right"></i>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      play("game", "keyboard", "popup");
+    </script>
   </body>
 </html>
