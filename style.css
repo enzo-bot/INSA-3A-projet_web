@@ -1,11 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots');
+
 :root {
 	--col-background: white;
-	--col-text: black;
-	--col-cell: rgb(187, 187, 187);
+	--col-text: rgb(95, 95, 95);
+	--col-cell: rgb(231, 231, 231);
 	--col-cell-victory: green;
 	--col-cell-correct: orange;
 	--col-cell-wrong: red;
-	--col-keyboard: rgb(148, 148, 148);
 }
 
 * {
@@ -16,6 +17,7 @@
 	user-select: none;
 	text-align: center;
 	transition: all 0.2s ease;
+	font-family: 'Zen Dots';
 }
 
 body {
@@ -66,6 +68,16 @@ body>#game>.row>.cell {
 	font-size: 1.5rem;
 }
 
+body>#game>.row>.cell.active {
+	transform: scale(1.05);
+}
+
+body>#game>.row>.cell.victory,
+body>#game>.row>.cell.correct,
+body>#game>.row>.cell.wrong {
+	color: var(--col-background);
+}
+
 body>#game>.row>.cell.victory {
 	background-color: var(--col-cell-victory);
 }
@@ -78,16 +90,23 @@ body>#game>.row>.cell.wrong {
 	background-color: var(--col-cell-wrong);
 }
 
-body>#keyboard>table {
+body>#keyboard {
 	width: 100%;
-	padding: 0 10vw;
-	border-spacing: 0.4vw 1vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+body>#keyboard>table {
+	width: 50rem;
+	border-spacing: .75rem;
 }
 
 body>#keyboard>table td {
 	width: 10%;
-	padding: 1vh 0;
-	background-color: var(--col-keyboard);
+	padding: 1rem 0;
+	color: var(--col-background);
+	background-color: var(--col-text);
 	border-radius: 0.35rem;
 	transform: scale(0.95);
 }
@@ -98,9 +117,19 @@ body>#keyboard>table td:hover {
 	transform: scale(1);
 }
 
+body>#keyboard>table td:active {
+	filter: brightness(0.75);
+	cursor: pointer;
+	transform: scale(0.9);
+}
+
 body>#keyboard>table td>i {
 	font-size: 1.5rem;
 	padding-top: 0.2rem;
+}
+
+body>footer {
+	margin: 0;
 }
 
 body>#popup {

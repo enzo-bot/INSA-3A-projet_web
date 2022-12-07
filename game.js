@@ -15,12 +15,15 @@ var nLetter = 0;
 
 function checkRow()
 {
+    if (nLetter === 0) return;
     nLetter = 0;
-
     if (String(input) === word)
     {
         for (let i = 0; i < wordSize; i++)
+        {
             rows[nRow].childNodes[i].classList.add("victory");
+            animateCell(nRow, i);
+        }
         finish(true);
     }
     else
@@ -32,6 +35,7 @@ function checkRow()
                 rows[nRow].childNodes[i].classList.add("correct");
             else
                 rows[nRow].childNodes[i].classList.add("wrong");
+            animateCell(nRow, i);
         }
         nRow++;
         if (nRow == maxTries)
@@ -40,12 +44,24 @@ function checkRow()
     }
 }
 
+const cellAnimationDuration = 200;
+
+function animateCell(row, letter)
+{
+    rows[row].childNodes[letter].classList.add("active");
+    setTimeout(
+        () => rows[row].childNodes[letter].classList.remove("active"),
+        cellAnimationDuration
+    );
+}
+
 function addLetter(letter)
 {
     if (nLetter < wordSize)
     {
         input += letter.toLowerCase();
         rows[nRow].childNodes[nLetter].innerHTML = input[nLetter];
+        animateCell(nRow, nLetter);
         if (nLetter == wordSize - 1) checkRow();
         else nLetter++;
     }
@@ -56,8 +72,9 @@ function removeLetter()
     if (nLetter > 0)
     {
         nLetter--;
-        input[nLetter] = "";
+        input = input.slice(0, nLetter),
         rows[nRow].childNodes[nLetter].innerHTML = "";
+        animateCell(nRow, nLetter);
     }
 }
 
@@ -80,6 +97,7 @@ function generateGame()
             let c = document.createElement("div");
             c.classList.add("cell");
             row.appendChild(c);
+            animateCell(i, j);
         }
     }
 }

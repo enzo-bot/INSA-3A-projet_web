@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="game.js"></script>
-    <!-- <script type="text/javascript" src="java.js"></script> -->
     <script src="https://kit.fontawesome.com/c3b8725dbb.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="game.js"></script>
+
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <!-- HEADER -->
     <header>
       <h1 id="title">WORDLE</h1>
     </header>
 
+    <!-- GAME DIV -->
 		<section id="game">
     </section>
 
+    <!-- KEYBOARD -->
     <section id="keyboard">
       <table>
         <tbody>
@@ -57,19 +60,26 @@
       </table>
     </section>
 
-    <section id="popup">
-      <div>
-        <h1 id="message"></h1>
-        <h2 id="mot">
-          Le mot était : 
-          <b></b>
-        </h2>
-        <div id="restart">
-          <i class="fa-sharp fa-solid fa-rotate-right"></i>
-        </div>
-      </div>
-    </section>
+    <!-- FOOTER -->
+    <footer>
+      <a href="https://github.com/enzo-bot/INSA-3A-projet_web">source</a> - made in <b>INSA Toulouse</b>
+    </footer>
 
+  <!-- POPUP -->
+  <section id="popup">
+    <div>
+      <h1 id="message"></h1>
+      <h2 id="mot">
+        Le mot était : 
+        <b></b>
+      </h2>
+      <div id="restart">
+        <i class="fa-sharp fa-solid fa-rotate-right"></i>
+      </div>
+    </div>
+  </section>
+
+    <!-- GAME LAUNCHER -->
     <script>
       play("game", "keyboard", "popup");
     </script>
