@@ -13,11 +13,14 @@ var rows = [];
 var nRow = 0;
 var nLetter = 0;
 
+var dictionnaire = new Dictionnaire();
+
 function checkRow()
 {
 		if (nLetter != wordSize) {
 			return 0;
 		}
+		//console.log(dictionnaire.checkWord(input));
     if (nLetter === 0) return;
     nLetter = 0;
     if (String(input) === word)
@@ -96,7 +99,7 @@ function removeLetter()
 
 function generateWord()
 {
-    return "TABLEAU";
+    return dictionnaire.getWord();
 }
 
 function generateGame()
