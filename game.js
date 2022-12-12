@@ -15,6 +15,9 @@ var nLetter = 0;
 
 function checkRow()
 {
+		if (nLetter != wordSize) {
+			return 0;
+		}
     if (nLetter === 0) return;
     nLetter = 0;
     if (String(input) === word)
@@ -29,13 +32,27 @@ function checkRow()
     else
     {
         const last = wordSize - 1;
+				let wrong = 1;
         for (let i = 0; i < wordSize; i++)
         {
-            if (input[i] === word[i])
-                rows[nRow].childNodes[i].classList.add("correct");
-            else
-                rows[nRow].childNodes[i].classList.add("wrong");
-            animateCell(nRow, i);
+						wrong = 1;
+						if (input[i] == word[i]) {
+								rows[nRow].childNodes[i].classList.add("victory");
+								wrong = 0;
+						}
+						else {
+								for(let q=0;q<wordSize;q++) {
+									if (input[i]==word[q]) {
+										rows[nRow].childNodes[i].classList.add("correct");
+										wrong = 0;
+										break;
+									}
+								}
+								if (wrong == 1) {
+									rows[nRow].childNodes[i].classList.add("wrong");
+								}
+						}
+						animateCell(nRow, i);
         }
         nRow++;
         if (nRow == maxTries)
@@ -62,8 +79,7 @@ function addLetter(letter)
         input += letter.toLowerCase();
         rows[nRow].childNodes[nLetter].innerHTML = input[nLetter];
         animateCell(nRow, nLetter);
-        if (nLetter == wordSize - 1) checkRow();
-        else nLetter++;
+        if (nLetter != wordSize) nLetter++;
     }
 }
 
@@ -111,7 +127,7 @@ function generateKeyboard()
                 key.onclick = (e) => addLetter(key.innerHTML);
             else if (key.id === "delete")
                 key.onclick = (e) => removeLetter();
-            else if (key.id === "enter")
+            else if ((key.id === "enter"))
                 key.onclick = (e) => checkRow();
         });
 }
