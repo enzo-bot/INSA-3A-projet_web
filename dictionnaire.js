@@ -10,7 +10,12 @@ getWord() {
 }
 
 checkWord(word) {
-	let milieu = this.tableauLen/2;
+	return this.dictionnaire.includes(word.toUpperCase());
+	/*if (this.dictionnaire.indexOf(word)==-1) {
+		return false;
+	}
+	return true;*/
+	/*let milieu = this.tableauLen/2;
 	let base = 0;
 	let char_i = 0;
 	let mot = this.dictionnaire[milieu];
@@ -46,7 +51,7 @@ checkWord(word) {
 		}
 		
 	}
-	return false;
+	return false;*/
 
 }
 

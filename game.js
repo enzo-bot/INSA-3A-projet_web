@@ -20,7 +20,9 @@ function checkRow()
 		if (nLetter != wordSize) {
 			return 0;
 		}
-		//console.log(dictionnaire.checkWord(input));
+		if(!dictionnaire.checkWord(input)){
+			return 0;
+		}
     if (nLetter === 0) return;
     nLetter = 0;
     if (String(input) === word)
