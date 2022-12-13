@@ -54,6 +54,25 @@ body>#game>.row {
 	justify-content: center;
 }
 
+@keyframes badRow {
+	0% {
+		margin: 0 7vw;
+	}
+	25% {
+		margin: 0 0 0 7.2vw;
+	}
+	75% {
+		margin: 0 7.2vw 0 0;
+	}
+	100% {
+		margin: 0 8vw;
+	}
+}
+
+body>#game>.row.active {
+	animation: 0.35s cubic-bezier(0.075, 0.82, 0.165, 1) badRow;
+}
+
 body>#game>.row>.cell {
 	width: 100%;
 	max-width: 8.5vh;

@@ -17,53 +17,66 @@ var dictionnaire = new Dictionnaire();
 
 function checkRow()
 {
-		if (nLetter != wordSize) {
-			return 0;
-		}
-		if(!dictionnaire.checkWord(input)){
-			return 0;
-		}
-    if (nLetter === 0) return;
-    nLetter = 0;
-    if (String(input) === word)
+    const strInput = String(input);
+    if (nLetter === wordSize && dictionnaire.checkWord(strInput))
     {
-        for (let i = 0; i < wordSize; i++)
+        nLetter = 0;
+        if (strInput === word)
         {
-            rows[nRow].childNodes[i].classList.add("victory");
-            animateCell(nRow, i);
+            for (let i = 0; i < wordSize; i++)
+            {
+                rows[nRow].childNodes[i].classList.add("victory");
+                animateCell(nRow, i);
+            }
+            finish(true);
         }
-        finish(true);
-    }
-    else
-    {
-        const last = wordSize - 1;
-				let wrong = 1;
-        for (let i = 0; i < wordSize; i++)
+        else
         {
-						wrong = 1;
-						if (input[i] == word[i]) {
-								rows[nRow].childNodes[i].classList.add("victory");
-								wrong = 0;
-						}
-						else {
-								for(let q=0;q<wordSize;q++) {
-									if (input[i]==word[q]) {
-										rows[nRow].childNodes[i].classList.add("correct");
-										wrong = 0;
-										break;
-									}
-								}
-								if (wrong == 1) {
-									rows[nRow].childNodes[i].classList.add("wrong");
-								}
-						}
-						animateCell(nRow, i);
+            const last = wordSize - 1;
+            let wrong = 1;
+            for (let i = 0; i < wordSize; i++)
+            {
+                wrong = 1;
+                if (input[i] == word[i])
+                {
+                    rows[nRow].childNodes[i].classList.add("victory");
+                    wrong = 0;
+                }
+                else
+                {
+                    for(let q = 0; q < wordSize; q++)
+                    {
+                        if (input[i] === word[q])
+                        {
+                            rows[nRow].childNodes[i].classList.add("correct");
+                            wrong = 0;
+                            break;
+                        }
+                    }
+                    if (wrong == 1) {
+                        rows[nRow].childNodes[i].classList.add("wrong");
+                    }
+                }
+                animateCell(nRow, i);
+            }
+            nRow++;
+            if (nRow == maxTries)
+                finish(false);
+            else input = "";
         }
-        nRow++;
-        if (nRow == maxTries)
-            finish(false);
-        else input = "";
     }
+    else animateRow(nRow);
+}
+
+const rowAnimationDuration = 500;
+
+function animateRow(row)
+{
+    rows[row].classList.add("active");;
+    setTimeout(
+        () => rows[row].classList.remove("active"),
+        rowAnimationDuration
+    );
 }
 
 const cellAnimationDuration = 200;
@@ -84,8 +97,10 @@ function addLetter(letter)
         input += letter.toLowerCase();
         rows[nRow].childNodes[nLetter].innerHTML = input[nLetter];
         animateCell(nRow, nLetter);
-        if (nLetter != wordSize) nLetter++;
+        nLetter++;
+        if (nLetter == wordSize) checkRow();
     }
+    else checkRow();
 }
 
 function removeLetter()
