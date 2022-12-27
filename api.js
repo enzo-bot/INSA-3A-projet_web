@@ -4,13 +4,13 @@ import { hostname } from "os";
 
 export const router = Router();
 
-// Activation de la transformation de la requête en JSON.
+// Activation de la transformation des requêtes en JSON.
 router.use(json());
 
 // Dictionnaire.
 var dico = [];
 
-// Ouverture du fichier dictionnaire.
+// Chargement du fichier dictionnaire depuis le dossier dico.
 export const loadDico = (file) => {
     console.debug(`[${hostname}] Loading dico from "${file}"...`);
     fs.readFile("./dico/" + file, 'utf-8', (err, data) => {

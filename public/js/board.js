@@ -6,8 +6,12 @@ export const id = "wordle-board";
 // Nombres de lignes.
 export const maxRows = 6;
 
+// Élément HTML.
 const board = document.getElementById(id);
+// Tableau des lignes HTML.
 var rows = [];
+
+// Fonction appelée à la fin d'une partie.
 var finish = null;
 
 // Mot à trouver.
@@ -63,7 +67,7 @@ export const checkRow = () => {
                                         break;
                                     }
                                 }
-                                // Elle n'est pas de le mot => ERREUR !
+                                // Elle n'est pas dans le mot => ERREUR !
                                 if (j === wordSize)
                                     rows[nRow].childNodes[i].classList.add("wrong");
                             }
@@ -82,6 +86,7 @@ export const checkRow = () => {
         );
 }
 
+// Ajoute une lettre à la ligne courante du plateau.
 export const addLetter = (letter) => {
     if (nLetter < wordSize)
     {
@@ -94,6 +99,7 @@ export const addLetter = (letter) => {
     else checkRow();
 }
 
+// Ajoute la dernière lettre de la ligne courante du plateau.
 export const removeLetter = () => {
     if (nLetter > 0)
     {
@@ -104,8 +110,10 @@ export const removeLetter = () => {
     }
 }
 
+// Créer le plateau HTML et initialise la partie.
 export const create = async (finisher) => {
     finish = finisher;
+    // Obtention d'un mot aléatoire depuis l'API.
     api.getWord().then(
         txt => {
             word = txt.toLowerCase();
@@ -114,8 +122,9 @@ export const create = async (finisher) => {
             rows = [];
             nRow = 0;
             nLetter = 0;
-            
+            // Suppression des éléments HTML existants.
             while (board.firstChild) board.removeChild(board.firstChild);
+            // Création des éléments HTML.
             let j;
             for (let i = 0; i < maxRows; i++)
             {

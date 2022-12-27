@@ -4,6 +4,9 @@
     "description": "Wordle game in JavaScript.",
     "main": "wordle.js",
     "type": "module",
+    "engines": {
+        "node": "18.x"
+    },
     "scripts": {
         "start": "node wordle"
     },

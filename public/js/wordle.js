@@ -5,11 +5,14 @@ import * as popup from "./popup.js";
 // Indique si le jeu est actif.
 export var active = false;
 
+// Lance une nouvelle partie.
 export const start = () => {
     if (active)
         console.error("Wordle est déjà démarré.");
     else
     {
+        if (popup.isOpen()) popup.close();
+        // Création du plateau.
         board.create((victory) => {
             active = false;
             popup.open(victory, restart);
@@ -18,11 +21,5 @@ export const start = () => {
     }
 }
 
-export const restart = () => {
-    popup.close();
-    start();
-}
-
-if (popup.isOpen()) popup.close();
-keyboard.create(() => active, restart);
+keyboard.create(() => active, start);
 start();

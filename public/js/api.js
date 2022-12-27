@@ -1,4 +1,3 @@
-// CONSTANTES
 // URL de l'API.
 const apiURL = "/api/";
 // URL de la fonction getWord.
@@ -8,7 +7,7 @@ const checkWordURL = apiURL + "checkWord";
 // En-têtes HTTP des requêtes contenant du JSON.
 const JSONHeaders = new Headers({ "Content-Type": "application/json" });
 
-// Retourne un mot aléatoire (via l'API).
+// Retourne un mot aléatoire.
 export const getWord = async () => {
     return fetch(getWordURL).then(
         res => res.text(),
@@ -16,7 +15,7 @@ export const getWord = async () => {
     );
 }
 
-// Vérifie que le mot appartient au dictionnaire (via l'API).
+// Vérifie que le mot appartient au dictionnaire.
 export const checkWord = async (word) => {
     return fetch(checkWordURL, {
         method: "POST",
