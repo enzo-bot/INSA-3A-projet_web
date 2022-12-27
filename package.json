@@ -1,0 +1,14 @@
+{
+    "name": "wordle",
+    "version": "1.0.0",
+    "description": "Wordle game in JavaScript.",
+    "main": "wordle.js",
+    "type": "module",
+    "scripts": {
+        "start": "node wordle"
+    },
+    "dependencies": {
+        "dotenv": "^16.0.3",
+        "express": "^4.18.2"
+    }
+}
