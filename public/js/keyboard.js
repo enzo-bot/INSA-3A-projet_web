@@ -1,5 +1,6 @@
 import * as config from "./config.js";
 import * as board from "./board.js";
+import { popup } from "./popup.js";
 import { regex } from "./common.js";
 
 // ID du clavier.
@@ -41,7 +42,7 @@ export const create = (isActive, restart) => {
                 else if(e.key === "Enter") board.checkRow();
                 else hasBeenUsed = false;
             }
-            else if (e.key === "Enter") restart();
+            else if (e.key === "Enter") popup.click();
             else hasBeenUsed = false;
             if (hasBeenUsed) e.preventDefault();
         });

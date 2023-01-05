@@ -9,6 +9,11 @@ export var current = 0;
 export var total = cookie.getValue(totalCookie) ?? 0;
 export var best = cookie.getValue(bestCookie) ?? 0;
 
+export const updateDisplay = () => {
+    totalElement.innerHTML = total;
+    bestElement.innerHTML = best;
+}
+
 const perfectCharWeight = 15;
 const correctCharWeight = 5;
 const timeWeight = .25;
@@ -30,11 +35,10 @@ export const compute = (rows, wordLength, perfectChars, correctChars) => {
 export const register = () => {
     total += current;
     cookie.setValue(totalCookie, total);
-    totalElement.innerHTML = total;
     if (current > best)
     {
         best = current;
         cookie.setValue(bestCookie, best);
-        bestElement.innerHTML = best;
     }
+    updateDisplay();
 }

@@ -24,7 +24,7 @@ const createScoreMessage = () => {
 };
 
 // Éléments HTML.
-const popup = document.getElementById(id);
+export const popup = document.getElementById(id);
 const message = document.getElementById(messageId);
 const subMessage = document.getElementById(submessageId);
 const scoreMessage = document.getElementById(scoreMessageId);

@@ -1,6 +1,6 @@
 {
     "name": "wordle",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Wordle game in JavaScript.",
     "main": "wordle.js",
     "type": "module",
@@ -12,6 +12,7 @@
     },
     "dependencies": {
         "dotenv": "^16.0.3",
-        "express": "^4.18.2"
+        "express": "^4.18.2",
+        "vercel": "^28.10.2"
     }
 }

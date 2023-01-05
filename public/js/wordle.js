@@ -34,6 +34,7 @@ export const restart = () => {
 }
 
 config.init();
-if (!cookie.isValid()) cookie.reset();
+if (cookie.isValid()) score.updateDisplay();
+else cookie.reset();
 keyboard.create(() => active, start);
 start();

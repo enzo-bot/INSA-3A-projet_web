@@ -1,10 +1,9 @@
-import { dirname, join } from "path";
-import { fileURLToPath } from "url";
+import { join } from "path";
 import * as env from "dotenv";
 
 // CONSTANTES
 
-export const dir = dirname(fileURLToPath(import.meta.url));
+export const dir = process.cwd();
 
 // Chargement des variables d'environnement.
 env.config();
@@ -15,7 +14,7 @@ export const port = process.env.WORDLE_PORT;
 
 export const publicRoot = join(dir, process.env.WORDLE_PUBLIC_DIR ?? "public");
 
-export const dicoRoot = join(dir, process.env.WORDLE_DICO_DIR ?? "dico");
+export const dicoRoot = join(publicRoot, process.env.WORDLE_DICO_DIR ?? "dico");
 
 export const apiURL = "/" + (process.env.WORDLE_API_URL ?? "api");
 
