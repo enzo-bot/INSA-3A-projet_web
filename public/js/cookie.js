@@ -30,7 +30,6 @@ const get = () => {
 const write = (values, resetExpires = false, lifetime = defaultLifetime) => {
     let cookie = mandatoryValues;
     if (resetExpires) cookie.expires = (new Date(Date.now() + (lifetime * day))).toUTCString();
-    console.log(values);
     var cookieString = name + assignementSeparator + JSON.stringify(values);
     for (let name in cookie)
         cookieString += valuesSeparator + name + (!!cookie[name] ? assignementSeparator + String(cookie[name]) : "");
