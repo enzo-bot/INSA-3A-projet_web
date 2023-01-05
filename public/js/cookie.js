@@ -47,7 +47,8 @@ export const setValue = (key, value) => {
 };
 
 export const getValue = (key) => {
-    return get()[name][key];
+    const values = get()[name];
+    if (!!values) return values[key];
 };
 
 export const reset = (lifetime = defaultLifetime) => write({}, true, lifetime);

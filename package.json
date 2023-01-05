@@ -1,6 +1,6 @@
 {
     "name": "wordle",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "Wordle game in JavaScript.",
     "main": "wordle.js",
     "type": "module",
