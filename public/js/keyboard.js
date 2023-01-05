@@ -1,14 +1,13 @@
+import * as config from "./config.js";
 import * as board from "./board.js";
+import { regex } from "./common.js";
 
-// ID HTML du clavier.
+// ID du clavier.
 export const id = "wordle-keyboard";
-// ID HTML de la touche de suppression.
+// ID de la touche de suppression.
 export const deleteKeyId = "delete";
-// ID HTML de la touche d'entrée.
+// ID de la touche d'entrée.
 export const enterKeyId = "enter";
-
-// RegExp des lettres de l'alphabet.
-export const letterRegex = /[a-z]/i;
 
 // Élément HTML.
 const keyboard = document.getElementById(id);
@@ -34,13 +33,17 @@ export const create = (isActive, restart) => {
         // Activation de l'écoute du clavier physique.
         document.addEventListener('keydown', (e) => {
             if (e.altKey || e.ctrlKey) return;
+            let hasBeenUsed = true;
             if (isActive())
             {
-                if(e.key.length === 1 && e.key.match(letterRegex)) board.addLetter(e.key);
-                else if(e.key === "Backspace") board.removeLetter();
+                if(e.key.length === 1 && e.key.match(regex.letter)) board.addLetter(e.key);
+                else if(e.key === "Backspace" && !config.isSelected) board.removeLetter();
                 else if(e.key === "Enter") board.checkRow();
+                else hasBeenUsed = false;
             }
             else if (e.key === "Enter") restart();
+            else hasBeenUsed = false;
+            if (hasBeenUsed) e.preventDefault();
         });
         created = true;
     }

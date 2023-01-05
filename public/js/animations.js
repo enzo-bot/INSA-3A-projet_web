@@ -7,7 +7,7 @@ export const animateCell = (row, letter) => {
         () => row.childNodes[letter].classList.remove("active"),
         cellAnimationDuration
     );
-}
+};
 
 export const animateRow = (row) => {
     row.classList.add("active");
@@ -15,4 +15,4 @@ export const animateRow = (row) => {
         () => row.classList.remove("active"),
         rowAnimationDuration
     );
-}
+};

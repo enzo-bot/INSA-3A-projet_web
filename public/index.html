@@ -10,6 +10,21 @@
     <!-- HEADER -->
     <header>
       <h1 id="title">WORDLE</h1>
+      <div id="wordle-config">
+        <select id="dico">
+        </select>
+        <input type="number" id="maxLength" min="4" minlength="1">
+        <button id="start"><i class="fa-solid fa-play"></i></button>
+      </div>
+      <div class="panel" id="wordle-timer">
+        <h2>Timer</h2>
+        <h3><span id="time">00:00</span></h3>
+      </div>
+      <div class="panel" id="wordle-score">
+        <h2>Scores</h2>
+        <h3>Total : <span id="total">0</span></h3>
+        <h3>Meilleur : <span id="best">0</span></h3>
+      </div>
     </header>
 
     <!-- BOARD -->
@@ -69,9 +84,8 @@
   <section id="wordle-popup">
     <div>
       <h1 id="message"></h1>
-      <h2 id="mot">
-        - Appuyez pour recommencer -
-      </h2>
+      <h2 id="submessage"></h2>
+      <h2 id="scoreMessage"></h2>
       <div id="restart">
         <i class="fa-sharp fa-solid fa-rotate-right"></i>
       </div>

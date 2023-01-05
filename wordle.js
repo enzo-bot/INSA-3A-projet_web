@@ -1,25 +1,17 @@
-import * as env from "dotenv";
 import { default as express } from "express";
-import { dirname, join } from "path";
-import { fileURLToPath } from "url";
 import { hostname } from "os";
 
+import * as config from "./config.js";
 import * as api from "./api.js";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-// Chargement de l'environnement (fichier .env).
-env.config();
-const port = process.env.WORDLE_PORT;
 
 const app = express();
 
 // Création des routes de l'API.
-app.use("/api", api.router);
+app.use(config.apiURL, api.router);
+console.debug(`[${config.name}] API routes created (${config.apiURL} -> api.router).`)
 // Création des routes depuis le dossier pubilc.
-app.use(express.static(join(__dirname, "/public")));
+app.use(express.static(config.publicRoot));
+console.debug(`[${config.name}] Routes created from public folder (/ -> ${config.publicRoot}).`)
 
-// Chargement du dictionnaire.
-api.loadDico(process.env.WORDLE_DICO);
 // Démarrage de l'application.
-app.listen(port, () => console.log(`[${hostname}] Wordle running on port ${port}.`));
+app.listen(config.port, () => console.debug(`[${config.name}] Started on : http://${hostname}:${config.port}/`));
